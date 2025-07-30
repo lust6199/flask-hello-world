@@ -81,7 +81,7 @@ def db_select():
 def db_drop():
     conn = psycopg.connect("postgresql://lab10_db_73dc_user:k8B4vhJZNyKhqGS0mwQZa7hHECiYNCkO@dpg-d24qcrfgi27c73baq5f0-a/lab10_db_73dc")
     cur = conn.cursor()
-    cur.execute('DROP TABLE Basketball;')
+    cur.execute('DROP TABLE IF EXISTS Basketball;')
     conn.commit()
     cur.close()
     conn.close()
