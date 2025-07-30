@@ -66,7 +66,7 @@ def db_select():
             <th>Number</th>
         </tr>
     """
-    
+
     for record in records:
         response += "<tr>"
         for value in record:
@@ -76,3 +76,13 @@ def db_select():
     cur.close()
     conn.close()
     return response
+
+@app.route('/db_drop')
+def db_drop():
+    conn = psycopg.connect("postgresql://lab10_db_73dc_user:k8B4vhJZNyKhqGS0mwQZa7hHECiYNCkO@dpg-d24qcrfgi27c73baq5f0-a/lab10_db_73dc")
+    cur = conn.cursor()
+    cur.execute('DROP TABLE Basketball;')
+    conn.commit()
+    cur.close()
+    conn.close()
+    return "Basketball Table Dropped"
